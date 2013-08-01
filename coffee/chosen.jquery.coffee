@@ -164,7 +164,7 @@ class Chosen extends AbstractChosen
     @active_field = true
 
     @search_field.val(@search_field.val())
-    @search_field.focus()
+    @search_field.focus() unless @disable_search
 
 
   test_active_click: (evt) ->
@@ -230,7 +230,7 @@ class Chosen extends AbstractChosen
     @container.addClass "chosen-with-drop"
     @results_showing = true
 
-    @search_field.focus()
+    @search_field.focus() unless @disable_search
     @search_field.val @search_field.val()
 
     this.winnow_results()
@@ -276,7 +276,7 @@ class Chosen extends AbstractChosen
     if target.length
       @result_highlight = target
       this.result_select(evt)
-      @search_field.focus()
+      @search_field.focus() unless @disable_search
 
   search_results_mouseover: (evt) ->
     target = if $(evt.target).hasClass "active-result" then $(evt.target) else $(evt.target).parents(".active-result").first()
